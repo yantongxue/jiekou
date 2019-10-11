@@ -1,4 +1,7 @@
 #coding=utf-8
+import os
+import sys
+sys.path.append("E:\\jiekou")
 from data.get_data import Get_data
 from base.demo import RunMain
 from util.commen import CommonUtil
