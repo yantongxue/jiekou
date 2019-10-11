@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <style type="text/css">
+        body {margin:0; background-color: #fff; overflow: hidden}
+        input {background-color: #fff;}
+        .clearfix:before, .clearfix:after { content: ""; display: table; }
+        .clearfix:after { clear: both; }
+        .clearfix { zoom: 1; clear: both; }
+
+        .btn{
+            text-align: center;
+            display: inline-block;
+            color: #fff;
+            height: 24px;
+            line-height: 24px;
+            border-radius: 4px;
+            font-family: "Microsoft YaHei";
+            font-size: 12px;
+            *display: inline;
+            zoom:1;
+        }
+
+        .ui-login-box .bluebg{background-color: #4489ca!important;}
+        .ui-login-box .bluebg:hover{background-color: #62a5e2!important;}
+        .ui-login-box .bluelink{color: #4489ca!important;}
+        .ui-login-box .bluelink:hover{color: #62a5e2!important;}
+        .ui-login-box .redtext{color: #d75442!important;}
+
+        .ui-login-box{ font-size: 12px; color: #999;border: 10px solid #e9e9e9; height: 375px;}
+        .ui-login-box a{text-decoration: none;}
+        .ui-login-inner{padding: 15px;}
+        .ui-login-hd{ height: 24px; line-height: 24px; overflow: hidden; }
+        .ui-login-title{ float: left; display: inline; }
+        .ui-login-register {float: right; display: inline;}
+
+        .ui-login-close{ float: right; display: inline; color: #046f99 !important; text-decoration: none; }
+        .ui-login-bd{width: 260px;margin: 16px auto;}
+        .ui-login-form{}
+        .ui-login-form-error{ margin-bottom: 12px;}
+        .ui-login-btn{height: 38px;line-height: 38px;width: 100%;font-size: 16px;border-radius: 0;}
+        .ui-login-form-item:before, .ui-login-form-item:after {content: ""; display: table;}
+        .ui-login-form-item:after{ clear: both; overflow: hidden; }
+        .ui-login-form-item{ zoom: 1; margin-bottom: 12px; }
+        .ui-login-form-input{ width: 214px; margin: 0; font: 12px/1.5 helvetica,arial;border:0; padding: 4px;height: 28px; line-height: 28px;float: left;}
+        .ui-login-form-input:focus{ outline: none; }
+        .ui-login-usericon{
+            width: 36px;
+            height: 36px;
+            background: url("//i.thsi.cn/sns/circle/login/login.png") no-repeat;
+            background-position: -10px -10px;
+            float: left;
+        }
+        .ui-login-pwdicon{
+            width: 36px;
+            height: 36px;
+            background: url("//i.thsi.cn/sns/circle/login/login.png") no-repeat;
+            background-position: -10px -56px;
+            float: left;
+        }
+
+        .ui-login-vericode-box {
+            margin-bottom: 10px;
+        }
+
+        .ui-login-vericode-input{
+            border: 1px solid #ccc;
+            width: 100px;
+            padding: 4px;
+            height: 20px;
+            line-height: 20px;
+            float: left;
+        }
+        .ui-login-vericode-img{
+            width: 110px;
+            height: 30px;
+            float: right;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .ui-login-form-item .ui-login-form-field{
+            float: left;
+            border: 1px solid #ccc;
+            width: 258px;
+        }
+
+        .ui-login-form-options{
+            position: relative;
+        }
+
+        .ui-login-form-options .ui-login-form-checkbox{
+            position: relative;
+            top: 2px;
+            margin-right: 3px;
+        }
+        .ui-login-ft{ line-height: 18px;text-align: center; }
+        .ui-login-lostpass{ color: #999 !important;position: absolute;right: 0;top: 1px;}
+
+        .ui-login-trilateral {width: 260px; margin: 0 auto;}
+        .ui-login-trilateral>div {float: left; height: 20px; line-height: 20px;}
+        .ui-login-trilateral .trilateral-line {width: 95px;}
+        .ui-login-trilateral .trilateral-line div {width: 100%; height: 0px; border-top: 1px solid #e5e5e5; overflow: hidden;margin-top: 9px;}
+        .ui-login-trilateral .trilateral-text {padding: 0 10px; width: 50px; color: #999999;font-size: 12px;}
+
+        .ui-login-thrbtn {text-align: center;padding: 12px 0;}
+        .ui-login-thrbtn .thrbtn-mar {margin: 0 50px;}
+        .ui-login-thrbtn img { width: 24px; height: 24px; }
+    </style>
+</head>
+<body>
+<div id="J_LoginBox" class="ui-login-box">
+    <div class="ui-login-inner">
+
+        <div class="ui-login-hd">
+            <div class="ui-login-title">登录同花顺</div>
+            <div class="ui-login-register">
+                <a href="//upass.10jqka.com.cn/register"
+                   target="_blank" id="TARegister" class="bluelink">免费注册</a>
+            </div>
+        </div>
+
+        <div class="ui-login-bd">
+            <div class="ui-login-form">
+                <form action="/login?act=login_submit&view=default&isiframe=1" method="post" id="loginForm">
+                    <div class="ui-login-form-item">
+                        <div class="ui-login-form-field clearfix">
+                            <div class="ui-login-usericon"></div>
+                            <input placeholder="用户名/邮箱/手机" class="ui-login-form-input" type="text" id="unameTxt" value="testlz2">
+                            <input name="uname" type="hidden">
+                        </div>
+                    </div>
+                    <div class="ui-login-form-item">
+                        <div class="ui-login-form-field clearfix">
+                            <div class="ui-login-pwdicon"></div>
+                            <input placeholder="账号密码" id="passwdTxt" class="ui-login-form-input" type="password">
+                            <input type="hidden" name="passwd">
+                        </div>
+                    </div>
+
+                    <div id="captchaContainer" class="ui-login-form-item ui-login-vericode-box clearfix" style="display:none" >
+                        <input placeholder="验证码" type="text" id="captchaCode" name="captchaCode" class="ui-login-vericode-input">
+                        <a href="javascript:;"><img src="//i.thsi.cn/images/captcha/error.png" id="captchaImg" class="ui-login-vericode-img" title="点击更换验证码" data-src=""></a>
+                    </div>
+                    <div class="ui-login-form-item ui-login-form-options">
+      				<span>
+      					<input class="ui-login-form-checkbox ui-form-checkbox" name="longLogin" type="checkbox" id="TAAutologin" checked="checked" value="on">
+      					<span>自动登录</span>
+      				</span>
+                        <a href="//upass.10jqka.com.cn/lostpass" target="_blank" id="TALostpass" class="ui-login-lostpass">忘记密码？</a>
+                    </div>
+                                        <div class="ui-login-form-error redtext" id="err_contrainer"></div>
+                    <input type="hidden" name="rsa_version" id="rsa_version" value="default_2">
+                    <a href="javascript:checkAndSubmitForm();" class="btn bluebg ui-login-btn">登&nbsp;&nbsp;录</a>
+                    <input type="hidden" id="redir" name="redir" value="http://www.10jqka.com.cn">
+                </form>
+            </div>
+        </div>
+
+        <div class="ui-login-trilateral clearfix">
+            <div class="trilateral-line"><div></div></div>
+            <div class="trilateral-text">三方登录</div>
+            <div class="trilateral-line"><div></div></div>
+        </div>
+
+        <div class="ui-login-thrbtn">
+            <a href="javascript:void(0);" title="qq登录" onclick="toQzoneLogin('qq')"><img src="//i.thsi.cn/sns/circle/login/trilateral/qq.png" alt="qq登录"></a>
+            <a class="thrbtn-mar" href="javascript:void(0);" title="微信登录" onclick="toQzoneLogin('weixin');"><img src="//i.thsi.cn/sns/circle/login/trilateral/weixin.png" alt="微信登录"></a>
+            <a href="javascript:void(0);" title="微博登录" onclick="toQzoneLogin('weibo')"><img src="//i.thsi.cn/sns/circle/login/trilateral/weibo.png" alt="微博登录"></a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1561689.js"></script> <script type="text/javascript" src="//s.thsi.cn/js/ta_https.min.20120109.js"></script>
+<script type="text/javascript" src="//s.thsi.cn/combo?js/jquery-1.7.2.min.js!20151109"></script>
+<script type="text/javascript" src="/asset/login/js/captcha.min.js"></script>
+<script language="javascript" type="text/javascript" src="/pubkey/default.js?t=201809011552"></script>
+<script language="javascript" type="text/javascript" src="//s.thsi.cn/js/encrypt.min.js?t=201809011552"></script>
+<script type="text/javascript">
+    function toQzoneLogin(type)
+    {
+        var iWidth = 754;
+        var iHeight = 564;
+        var iTop = (window.screen.availHeight - 30 - iHeight) / 2;
+        var iLeft = (window.screen.availWidth - 10 - iWidth) / 2;
+        childWindow = window.open('/third?platform=web&type=' + type, "TencentLogin", "width=754,height=564,menubar=0,scrollbars=1, resizable=1,status=1,titlebar=0,toolbar=0,location=1,top=" + iTop + ",left=" + iLeft);
+    }
+
+    $(document).ready(function () {
+        $('#unameTxt').focus();
+        $("#rsa_version").val(thsencrypt.getVersion());
+        $.thsLoginCaptcha('#unameTxt', '#captchaContainer');
+    });
+
+    $('#passwdTxt,#unameTxt,#captchaCode').keypress(function (e) {
+        if (window.event) {
+            var keyCode	= window.event.keyCode;
+        } else {
+            var keyCode	= e.keyCode;
+        }
+        if (keyCode == 13) {
+            checkAndSubmitForm();
+        }
+    });
+
+    $('#TAAutologin').click(function(){
+        if($("input[type='checkbox']").is(':checked')){
+            TA.log({
+                id:"pcpublic_login.autologin",
+                fid:"info_gather"
+            });
+        }
+        else{
+            TA.log({
+                id:"pcpublic_login.qxautologin",
+                fid:"info_gather"
+            });
+        }
+    });
+
+    $('#TALostpass').click(function(){
+        TA.log({
+            id:"pcpublic_login.lostpass",
+            fid:"info_gather"
+        });
+    });
+
+    $('#TARegister').click(function(){
+        TA.log({
+            id:"pcpublic_login.register",
+            fid:"info_gather"
+        });
+    });
+
+
+    function checkAndSubmitForm() {
+        TA.log({
+            id:"pcpublic_login.login",
+            fid:"info_gather"
+        });
+        var $accountEl = $('#unameTxt');
+        var $passwdEl = $('#passwdTxt');
+        if (!$accountEl.val()) {
+            $('#err_contrainer').html('用户名不能为空');
+            $('#err_contrainer').show();
+            return ;
+        }
+        if (!$passwdEl.val()) {
+            $('#err_contrainer').html('密码不能为空');
+            $('#err_contrainer').show();
+            return ;
+        }
+        var account = $.trim($accountEl.val());
+        var passwd = $.trim($passwdEl.val());
+        $("input[name='uname']").val(thsencrypt.encode(account));//会返回对'测试账号名'加密后的字符串//会返回对'测试账号名'加密后的字符串
+        $("input[name='passwd']").val(thsencrypt.encode(passwd));
+        // $passwdEl.val(thsencrypt.encode(passwd));
+        setTimeout(function(){
+            $('#loginForm').submit();
+        },300);
+        return ;
+    }
+</script>
+</body>
+</html>
